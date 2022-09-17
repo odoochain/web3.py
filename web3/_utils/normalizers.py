@@ -1,7 +1,9 @@
 import codecs
-from distutils.version import (
-    LooseVersion,
-)
+#from distutils.version import (
+#    LooseVersion,
+#)
+from packaging.version import Version
+
 import functools
 import json
 from typing import (
@@ -234,7 +236,8 @@ BASE_RETURN_NORMALIZERS = [
 ]
 
 
-if LooseVersion(eth_abi.__version__) < LooseVersion("2"):
+# if LooseVersion(eth_abi.__version__) < LooseVersion("2"):
+if Version(eth_abi.__version__) < Version("2"):
     BASE_RETURN_NORMALIZERS.append(decode_abi_strings)
 
 
